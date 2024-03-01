@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .compare-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 45%;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Market Visualization</h1>
+
+    <div class="container">
+        <h2>Database Data</h2>
+        <div class="compare-container">
+            <div class="compare-box">
+                <h3>Vehicle 1</h3>
+                <select id="car1Select" onchange="changeCar('car1')">
+                    <option value="KNDI.jpg">KNDI</option>
+                    <option value="GELYF.jpg">GELYF</option>
+                    <option value="TM.jpg">TM</option>
+                    <option value="LI.jpg">LI</option>
+                    <option value="STLA.jpg">STLA</option>
+                    <option value="MAHMF.jpg">MAHMF</option>
+                    <option value="F.jpg">F</option>
+                    <option value="DNFGF.jpg">DNFGF</option>
+                    <option value="ARGGY.jpg">ARGGY</option>
+                    <option value="XPEV.jpg">XPEV</option>
+                    <option value="BMWYY.jpg">BMWYY</option>
+                    <option value="CENN.jpg">CENN</option>
+                    <option value="NSANY.jpg">NSANY</option>
+                    <option value="NIO.jpg">NIO</option>
+                    <option value="MZDAY.jpg">MZDAY</option>
+                    <option value="HYMTF.jpg">HYMTF</option>
+                    <option value="TSLA.jpg">TSLA</option>
+                    <option value="RIVN.jpg">RIVN</option>
+                    <option value="VLVLY.jpg">VLVLY</option>
+                    <option value="RACE.jpg">RACE</option>
+                    <option value="PII.jpg">PII</option>
+                    <option value="NKLA.jpg">NKLA</option>
+                    <option value="PSNY.jpg">PSNY</option>
+            
+                </select>
+                <img id="car1Image" src="car1_image.jpg" alt="Vehicle 1">
+            </div>
+            <div class="compare-box">
+                <h3>Vehicle 2</h3>
+                <select id="car2Select" onchange="changeCar('car2')">
+                    <option value="KNDI.jpg">KNDI</option>
+                    <option value="GELYF.jpg">GELYF</option>
+                    <option value="TM.jpg">TM</option>
+                    <option value="LI.jpg">LI</option>
+                    <option value="STLA.jpg">STLA</option>
+                    <option value="MAHMF.jpg">MAHMF</option>
+                    <option value="F.jpg">F</option>
+                    <option value="DNFGF.jpg">DNFGF</option>
+                    <option value="ARGGY.jpg">ARGGY</option>
+                    <option value="XPEV.jpg">XPEV</option>
+                    <option value="BMWYY.jpg">BMWYY</option>
+                    <option value="CENN.jpg">CENN</option>
+                    <option value="NSANY.jpg">NSANY</option>
+                    <option value="NIO.jpg">NIO</option>
+                    <option value="MZDAY.jpg">MZDAY</option>
+                    <option value="HYMTF.jpg">HYMTF</option>
+                    <option value="TSLA.jpg">TSLA</option>
+                    <option value="RIVN.jpg">RIVN</option>
+                    <option value="VLVLY.jpg">VLVLY</option>
+                    <option value="RACE.jpg">RACE</option>
+                    <option value="PII.jpg">PII</option>
+                    <option value="NKLA.jpg">NKLA</option>
+                    <option value="PSNY.jpg">PSNY</option>
+                </select>
+                <img id="car2Image" src="car1_image.jpg" alt="Vehicle 2">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Custom Data Visualization </h2>
+        <div class="compare-container">
+            <div class="chart-container">
+                <h3>Data 1</h3>
+                <input type="file" id="csv-file-left" accept=".csv">
+                <canvas id="line-chart-left"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Data 2</h3>
+                <input type="file" id="csv-file-right" accept=".csv">
+                <canvas id="line-chart-right"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chartLeft = null;
+        let chartRight = null;
+
+        document.getElementById('csv-file-left').addEventListener('change', handleFileSelectLeft);
+        document.getElementById('csv-file-right').addEventListener('change', handleFileSelectRight);
+
+        function handleFileSelectLeft(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const csv = event.target.result;
+                const data = parseCSV(csv);
+                if (chartLeft) {
+                    chartLeft.destroy(); 
+                }
+                drawLineChartLeft(data);
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function handleFileSelectRight(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const csv = event.target.result;
+                const data = parseCSV(csv);
+                if (chartRight) {
+                    chartRight.destroy(); 
+                }
+                drawLineChartRight(data);
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function parseCSV(csv) {
+            const lines = csv.split('\n');
+            const data = {
+                labels: [],
+                datasets: []
+            };
+
+            const headers = lines[0].split(',');
+            for (let i = 1; i < headers.length && i <= 6; i++) {
+                data.datasets.push({
+                    label: headers[i],
+                    data: [],
+                    fill: false,
+                    borderColor: `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`, 
+                    tension: 0.1,
+                    pointRadius: 0.8,
+      borderWidth: 0.8
+                });
+            }
+
+          
+            for (let i = 1; i < lines.length; i++) { 
+                const values = lines[i].split(',');
+                data.labels.push(values[0]);
+                for (let j = 1; j < values.length && j <= 6; j++) { 
+                    data.datasets[j - 1].data.push(parseFloat(values[j]));
+                }
+            }
+
+            return data;
+        }
+
+        function drawLineChartLeft(data) {
+            const ctx = document.getElementById('line-chart-left').getContext('2d');
+            chartLeft = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function drawLineChartRight(data) {
+            const ctx = document.getElementById('line-chart-right').getContext('2d');
+            chartRight = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function randomColor() {
+            return Math.floor(Math.random() * 256);
+        }
+
+        function changeCar(carNumber) {
+            var selectBox = document.getElementById(carNumber + "Select");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var displayImage = document.getElementById(carNumber + "Image");
+            displayImage.src = selectedValue;
+        }
+    </script>
+</body>
+</html>
