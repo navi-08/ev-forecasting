@@ -1,5 +1,21 @@
 # ev-forecasting      
+## Stock Clustering Analysis Summary
 
+### Total Explained Variance
+The total explained variance of the three principal components is  99.09%. This indicates that the three PCA about 99.09% of the total variance in the original data, providing a good representation of the variability present in the dataset.
+
+### Comparison of Best K Values
+- The best k value for both original and PCA-transformed data was found to be 3.
+- However, the inertia, which represents the within-cluster sum of squares, was lower for the original data (22.8044) compared to the PCA data (32.278).
+- This suggests that while the clustering structure remains similar between the original and PCA data, the original data had slightly better clustering performance as indicated by the lower inertia.
+
+### Impact of Using Fewer Features
+- The analysis of stock data using K-Means clustering revealed an optimal number of clusters, k=3, regardless of whether using the original features or PCA-transformed data.
+- While PCA reduced dimensionality, it also slightly increased the inertia compared to the original features.
+- The choice between using original features and PCA depends on the trade-off between interpretability and clustering accuracy.
+
+### Overall Impact
+The analysis provided valuable insights into the underlying structure of the stock data, identifying three distinct clusters. This insight can be utilized by investors and financial analysts for portfolio diversification, risk management, and stock selection strategies. Additionally, the comparison between clustering results from original and PCA-transformed data highlighted the importance of feature selection and dimensionality reduction techniques in clustering analysis.
 
 # Stock Clustering Analysis
 
