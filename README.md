@@ -48,14 +48,15 @@ To replicate the analysis, follow these steps:
 ## Dependencies
 - Python
 - Pandas
+- matplotlib
 - NumPy
 - Scikit-learn
 - hvPlot
 - Jupyter Notebook
 -html
 ## Contributors
-- [Navjeet Ghuman
-Max Owens
-Judd Sanders 
+- [Navjeet Singh Ghuman,
+Max Owens,
+Judd Sanders ,
 Zhongxuan Si
 )
