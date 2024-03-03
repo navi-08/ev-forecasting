@@ -34,7 +34,6 @@ Based on the clustering analysis using K-means, the companies have been grouped 
 
 **Cluster 0 (High Growth Potential):**
 - Companies with positive growth potential.
-- Generally have positive PCA1 values indicating growth potential.
 TSLA, HYMTF, MAHMF, LI, FUJHY, MZDAY, VLVLY, RACE, BMWYY, XPEV, NSANY, TM, BYDDF, ARGGY, RNLSY, NKLA, GOEV, FSR, CENN, FFIE, MULN.
 
 **Cluster 1 (Average Growth):**
@@ -43,7 +42,6 @@ TSLA, HYMTF, MAHMF, LI, FUJHY, MZDAY, VLVLY, RACE, BMWYY, XPEV, NSANY, TM, BYDDF
 
 **Cluster 2 (Low Growth or No Growth):**
 - Companies with low or negative growth potential.
-- Generally have negative PCA1 values indicating little to no growth.
 - VWAGY, PII, RIVN, HMC, GWLLY, GELYF, DNFGF, EVTV, NIO, GM, F, HYZN, KNDI, LCID, FUV, PSNY, SOLO.
 
 Based on this analysis, investors may consider investing in companies from Cluster 0, as they have higher growth potential. Companies in Cluster 1 may also be considered for investment, as they exhibit average growth potential
