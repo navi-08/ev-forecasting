@@ -109,11 +109,12 @@ To replicate the analysis, follow these steps:
 - Scikit-learn
 - hvPlot
 - Jupyter Notebook
--html
-  -Machine Learning(Unsupervised)
+- html 
+- Machine Learning(Unsupervised)
 ## Contributors
 - [Navjeet Singh Ghuman,
 Max Owens,
 Judd Sanders ,
 Zhongxuan Si
 ) 
+ 
