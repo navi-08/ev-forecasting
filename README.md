@@ -1,21 +1,80 @@
 # ev-forecasting      
 ## Stock Clustering Analysis Summary
 
-### Total Explained Variance
-The total explained variance of the three principal components is  99.09%. This indicates that the three PCA about 99.09% of the total variance in the original data, providing a good representation of the variability present in the dataset.
+report 1.  
 
-### Comparison of Best K Values
-- The best k value for both original and PCA-transformed data was found to be 3.
-- However, the inertia, which represents the within-cluster sum of squares, was lower for the original data (22.8044) compared to the PCA data (32.278).
-- This suggests that while the clustering structure remains similar between the original and PCA data, the original data had slightly better clustering performance as indicated by the lower inertia.
+Based on the provided stock analysis report:
 
-### Impact of Using Fewer Features
-- The analysis of stock data using K-Means clustering revealed an optimal number of clusters, k=3, regardless of whether using the original features or PCA-transformed data.
-- While PCA reduced dimensionality, it also slightly increased the inertia compared to the original features.
-- The choice between using original features and PCA depends on the trade-off between interpretability and clustering accuracy.
+1. Clustering using K-means:
+   - The elbow method suggests that the optimal number of clusters is 3, with an inertia value of 32.131941.
+   - The sum of explained variance ratio of the principal components in PCA is approximately 98.82%.
 
-### Overall Impact
-The analysis provided valuable insights into the underlying structure of the stock data, identifying three distinct clusters. This insight can be utilized by investors and financial analysts for portfolio diversification, risk management, and stock selection strategies. Additionally, the comparison between clustering results from original and PCA-transformed data highlighted the importance of feature selection and dimensionality reduction techniques in clustering analysis.
+2. Top Companies in Each Cluster:
+   - Cluster 0: These companies are characterized by negative or low growth rates.
+     - VWAGY, PII, RIVN, HMC, GWLLY, GELYF, DNFGF, EVTV, NIO, GM, F, HYZN, KNDI, LCID, FUV, PSNY, SOLO, NKLA, GOEV, FSR, CENN, FFIE, MULN
+   - Cluster 1: These companies have relatively higher annual and monthly growth rates.
+     - ISUZY, MBGYY
+   - Cluster 2: These companies exhibit moderate to high annual and monthly growth rates.
+     - TSLA, HYMTF, MAHMF, LI, FUJHY, MZDAY, VLVLY, RACE, BMWYY, XPEV, NSANY, TM, ARGGY, RNLSY, BYDDF
+
+3. Conclusion:
+   - The analysis categorizes companies into three clusters based on their growth rates: low growth, moderate growth, and high growth.
+   - Companies in Cluster 2 are expected to have higher growth potential, while those in Cluster 1 may have moderate growth. Cluster 0 companies are likely facing challenges in growth.
+   - Investors can use this information to identify potential investment opportunities based on the growth prospects of individual companies and clusters.
+
+
+prediction report 2
+
+Based on the clustering analysis using K-means, the companies have been grouped into different clusters based on their growth patterns. Here's a summary of the findings:
+
+**Cluster Analysis using K-means:**
+
+- Number of clusters (k): 3
+- Inertia: 30.311200
+
+**Cluster 0 (High Growth Potential):**
+- Companies with positive growth potential.
+- Generally have positive PCA1 values indicating growth potential.
+TSLA, HYMTF, MAHMF, LI, FUJHY, MZDAY, VLVLY, RACE, BMWYY, XPEV, NSANY, TM, BYDDF, ARGGY, RNLSY, NKLA, GOEV, FSR, CENN, FFIE, MULN.
+
+**Cluster 1 (Average Growth):**
+- Companies with average growth potential.
+-  ISUZY, MBGYY.
+
+**Cluster 2 (Low Growth or No Growth):**
+- Companies with low or negative growth potential.
+- Generally have negative PCA1 values indicating little to no growth.
+- VWAGY, PII, RIVN, HMC, GWLLY, GELYF, DNFGF, EVTV, NIO, GM, F, HYZN, KNDI, LCID, FUV, PSNY, SOLO.
+
+Based on this analysis, investors may consider investing in companies from Cluster 0, as they have higher growth potential. Companies in Cluster 1 may also be considered for investment, as they exhibit average growth potential
+Comparing the two reports, we can see some similarities and differences in the clustering results and top companies identified. Here's a summary:
+
+**Similarities:**
+- Both reports use K-means clustering with the optimal number of clusters determined to be 3.
+- Both reports identify clusters representing companies with high growth potential, average growth, and low or no growth.
+- The top companies in Cluster 0 (high growth potential) are largely consistent between the two reports.
+
+**Differences:**
+- The inertia values and explained variance ratios differ slightly between the two reports.
+- There are differences in the composition of companies within each cluster, particularly in Clusters 1 and 2.
+- The order of the top companies within each cluster may vary between the two reports.
+
+**Top 10 Companies:**
+Based on the similarities between the two reports and considering the top companies in Cluster 0 (high growth potential), here are the top 10 companies:
+
+1. TSLA
+2. HYMTF
+3. MAHMF
+4. LI
+5. FUJHY
+6. MZDAY
+7. VLVLY
+8. RACE
+9. BMWYY
+10. XPEV
+
+These companies consistently appear as top performers in terms of growth potential across both reports.
+
 
 # Stock Clustering Analysis
 
@@ -54,6 +113,7 @@ To replicate the analysis, follow these steps:
 - hvPlot
 - Jupyter Notebook
 -html
+  -Machine Learning(Unsupervised)
 ## Contributors
 - [Navjeet Singh Ghuman,
 Max Owens,
