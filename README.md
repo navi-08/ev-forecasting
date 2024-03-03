@@ -111,7 +111,7 @@ To replicate the analysis, follow these steps:
 - hvPlot
 - Jupyter Notebook
 -html
-  -Machine Learning(Unsupervised)
+-Machine Learning(Unsupervised)
 ## Contributors
 - [Navjeet Singh Ghuman,
 Max Owens,
