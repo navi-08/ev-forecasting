@@ -1,7 +1,7 @@
 # ev-forecasting      
 ## Stock Clustering Analysis Summary
 
-report 1.  
+Report 1.  
 
 Based on the provided stock analysis report:
 
@@ -23,7 +23,7 @@ Based on the provided stock analysis report:
    - Investors can use this information to identify potential investment opportunities based on the growth prospects of individual companies and clusters.
 
 
-prediction report 2
+Prediction report 2
 
 Based on the clustering analysis using K-means, the companies have been grouped into different clusters based on their growth patterns. Here's a summary of the findings:
 
