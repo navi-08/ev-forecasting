@@ -49,8 +49,7 @@ Comparing the two reports, we can see some similarities and differences in the c
 
 **Similarities:**
 - Both reports use K-means clustering with the optimal number of clusters determined to be 3.
-- Both reports identify clusters representing companies with high growth potential, average growth, and low or no growth.
-- The top companies in Cluster 0 (high growth potential) are largely consistent between the two reports.
+- Both reports identify clusters representing companies with high growth potential, average growth, and low or no growth
 
 **Differences:**
 - The inertia values and explained variance ratios differ slightly between the two reports.
